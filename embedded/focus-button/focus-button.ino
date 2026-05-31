@@ -6,11 +6,12 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
+// WiFi credentials and AUTH_TOKEN live in secrets.h (gitignored).
+// Copy secrets.example.h to secrets.h and fill it in before flashing.
+#include "secrets.h"
+
 // ===== CONFIG =====
-const char* WIFI_SSID = "Demirkans-2Gz";
-const char* WIFI_PASSWORD = "38030Kayseri!";
 const char* SERVER_URL = "https://focus-button-backend.unhook.workers.dev/press";
-const char* AUTH_TOKEN = "966c7278e3d618c677d8772e612ea6f79e6d575d53bac63229d3af670c02b28a";
 const int DURATION_MINUTES = 1;
 
 const int BUTTON_PIN = 26;

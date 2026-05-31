@@ -3,6 +3,9 @@ macos/scripts/__pycache__/
 macos/scripts/*.log
 macos/scripts/config.json
 
+# ESP32 firmware secrets
+embedded/focus-button/secrets.h
+
 # OS junk
 .DS_Store
 Thumbs.db
