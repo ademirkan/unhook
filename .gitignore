@@ -1,0 +1,12 @@
+# macOS Python scripts
+macos/scripts/__pycache__/
+macos/scripts/*.log
+macos/scripts/config.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+*.swp
