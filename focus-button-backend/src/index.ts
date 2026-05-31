@@ -18,6 +18,7 @@ import { DurableObject } from 'cloudflare:workers';
 interface Env {
 	DB: D1Database;
 	HUB: DurableObjectNamespace<Hub>;
+	SHARED_SECRET: string;
 }
 
 interface ActiveSession {
@@ -28,8 +29,10 @@ interface ActiveSession {
 }
 
 // ===== Config =====
+// SHARED_SECRET is provided as a Cloudflare Workers secret:
+//   npx wrangler secret put SHARED_SECRET
+// (set via env.SHARED_SECRET below; never hardcoded in source)
 
-const SHARED_SECRET = 'PASTE-YOUR-OPENSSL-OUTPUT-HERE';
 const DEFAULT_DURATION_MINUTES = 60;
 const DISPENSE_WINDOW_SECONDS = 30;
 
@@ -51,7 +54,7 @@ export default {
 		// also accept the token as a ?token= query param.
 		const headerAuth = request.headers.get('Authorization');
 		const queryToken = url.searchParams.get('token');
-		const authorized = headerAuth === `Bearer ${SHARED_SECRET}` || queryToken === SHARED_SECRET;
+		const authorized = headerAuth === `Bearer ${env.SHARED_SECRET}` || queryToken === env.SHARED_SECRET;
 
 		if (!authorized) {
 			return json({ error: 'unauthorized' }, 401);
