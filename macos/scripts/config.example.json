@@ -1,0 +1,8 @@
+{
+    "url": "https://your-worker-subdomain.workers.dev",
+    "secret": "REPLACE_WITH_SHARED_SECRET",
+    "coldturkey_path": "/Applications/Cold Turkey Blocker.app/Contents/MacOS/Cold Turkey Blocker",
+    "block_name": "cold turkey",
+    "poll_interval_seconds": 5,
+    "lock_blocks": true
+}
